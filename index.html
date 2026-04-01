@@ -163,8 +163,8 @@
         .text-yellow-400 { color: #fbbf24; }
 
         /* Service card image lazy load fade */
-        .service-card img, .service-card picture { opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; }
-        .service-card img.loaded, .service-card picture:has(img.loaded) { opacity: 1; }
+        .service-card picture { opacity: 1; }
+        .service-card img { opacity: 1; }
 
         /* Smooth section dividers */
         .section-glow {
@@ -1518,14 +1518,6 @@
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Service card images — fade in on load
-        document.querySelectorAll('.service-card img').forEach(img => {
-            if (img.complete) {
-                img.classList.add('loaded');
-            } else {
-                img.addEventListener('load', () => img.classList.add('loaded'));
-            }
-        });
 
         // Smooth nav shrink on scroll
         const nav = document.querySelector('nav');
