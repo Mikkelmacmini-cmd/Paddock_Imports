@@ -975,49 +975,55 @@
                         Ready to experience Denver's premier import auto service? Reach out to schedule your appointment or simply ask a question. Our team is here to help.
                     </p>
 
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl accent-gradient flex items-center justify-center text-white flex-shrink-0">
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start gap-3 bg-surface-800 rounded-xl p-4 border border-surface-700">
+                            <div class="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center text-white flex-shrink-0">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
                                 <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Call Us</p>
-                                <a href="tel:3038255700" class="text-white font-heading font-bold text-xl hover:text-paddock transition-colors">(303) 825-5700</a>
+                                <a href="tel:3038255700" class="text-white font-heading font-bold text-base hover:text-paddock transition-colors">(303) 825-5700</a>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl accent-gradient flex items-center justify-center text-white flex-shrink-0">
+                        <div class="flex items-start gap-3 bg-surface-800 rounded-xl p-4 border border-surface-700">
+                            <div class="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center text-white flex-shrink-0">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
                                 <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Email Us</p>
-                                <a href="mailto:service@paddockimports.com" class="text-white font-heading font-bold text-lg hover:text-paddock transition-colors">service@paddockimports.com</a>
+                                <a href="mailto:service@paddockimports.com" class="text-white font-heading font-bold text-sm hover:text-paddock transition-colors break-all">service@paddockimports.com</a>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl accent-gradient flex items-center justify-center text-white flex-shrink-0">
+                        <div class="flex items-start gap-3 bg-surface-800 rounded-xl p-4 border border-surface-700">
+                            <div class="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center text-white flex-shrink-0">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
                                 <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Visit Us</p>
-                                <p class="text-white font-heading font-bold text-lg">2400 W 7th Ave</p>
-                                <p class="text-gray-400">Denver, CO 80204</p>
+                                <p class="text-white font-heading font-bold text-base">2400 W 7th Ave</p>
+                                <p class="text-gray-400 text-sm">Denver, CO 80204</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl accent-gradient flex items-center justify-center text-white flex-shrink-0">
+                        <div class="flex items-start gap-3 bg-surface-800 rounded-xl p-4 border border-surface-700">
+                            <div class="w-10 h-10 rounded-lg accent-gradient flex items-center justify-center text-white flex-shrink-0">
                                 <i class="fa-solid fa-clock"></i>
                             </div>
                             <div>
                                 <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Hours</p>
-                                <p class="text-white font-heading font-bold">Monday – Friday</p>
-                                <p class="text-gray-400">7:30 AM – 5:30 PM</p>
-                                <p class="text-gray-500 text-sm mt-1">Drop-off: 7:30–9:00 AM &nbsp;|&nbsp; Closed Weekends</p>
+                                <p class="text-white font-heading font-bold text-sm">Mon – Fri</p>
+                                <p class="text-gray-400 text-sm">7:30 AM – 5:30 PM</p>
+                                <p class="text-gray-500 text-xs mt-1">Closed Weekends</p>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Map -->
+                    <div class="rounded-xl overflow-hidden border border-surface-700" style="height:280px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.55682225242!2d-105.0165256!3d39.7271414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7f3ab0969c5d%3A0x3324b86085941d91!2sPaddock%20Imports!5e0!3m2!1sen!2sus!4v1775005767024!5m2!1sen!2sus"
+                            width="100%" height="100%" style="border:0; display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
@@ -1425,12 +1431,6 @@
             setColumns();
             window.addEventListener('resize', setColumns);
         </script>
-    </section>
-
-    <!-- MAP -->
-    <section class="relative border-t border-surface-700\/50" style="height:450px;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3068.55682225242!2d-105.0165256!3d39.7271414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7f3ab0969c5d%3A0x3324b86085941d91!2sPaddock%20Imports!5e0!3m2!1sen!2sus!4v1775005767024!5m2!1sen!2sus"
-            width="100%" height="100%" style="border:0; display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
     <!-- MOBILE STICKY BAR -->
