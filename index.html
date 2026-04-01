@@ -113,9 +113,11 @@
             #mobile-sticky { display: flex; }
             body { padding-bottom: 70px; }
             #back-to-top { bottom: 5.5rem !important; }
-            /* Hero: full-width video on mobile */
-            #hero-video { width: 100% !important; left: 0 !important; right: auto !important; opacity: 0.4; }
-            .hero-gradient-left { background: linear-gradient(to bottom, rgba(6,11,20,0.8) 0%, rgba(6,11,20,0.5) 50%, rgba(6,11,20,0.9) 100%) !important; }
+            /* Hero: hide video on mobile, use solid background */
+            #hero-video { display: none !important; }
+            #hero-replay { display: none !important; }
+            .hero-gradient-left { background: none !important; }
+            #hero-mobile-bg { display: block !important; }
         }
         /* Improve tap targets */
         @media (max-width: 767px) {
@@ -452,6 +454,9 @@
     <!-- HERO -->
     <section class="relative h-screen min-h-\[800px\] flex items-center pt-24" style="background-color: #060B14;">
 
+        <!-- Mobile solid background (hidden on desktop) -->
+        <div id="hero-mobile-bg" style="display:none; position:absolute; inset:0; background: radial-gradient(ellipse at 70% 50%, rgba(0,168,214,0.08) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(0,86,179,0.06) 0%, transparent 50%);"></div>
+
         <!-- Video: anchored right so car travels left→right, final frame visible on right -->
         <video id="hero-video" autoplay muted playsinline preload="metadata"
             style="position: absolute; top: 0; right: 0; width: 75%; height: 100%; object-fit: cover; object-position: left center;">
@@ -490,7 +495,7 @@
         </div>
 
         <!-- Replay button -->
-        <button onclick="const v=document.getElementById('hero-video'); v.currentTime=0; v.play();"
+        <button id="hero-replay" onclick="const v=document.getElementById('hero-video'); v.currentTime=0; v.play();"
             title="Replay video"
             style="position:absolute; bottom:2rem; right:2rem; width:36px; height:36px; border-radius:9999px; background:rgba(0,168,214,0.15); border:1px solid rgba(0,168,214,0.3); color:rgba(255,255,255,0.5); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.2s; z-index:20;"
             onmouseover="this.style.background='rgba(0,168,214,0.3)'; this.style.color='#fff'; this.style.borderColor='rgba(0,168,214,0.7)';"
