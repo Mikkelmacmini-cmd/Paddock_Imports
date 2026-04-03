@@ -69,6 +69,45 @@ input, textarea, select { font: inherit; }
     --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* ===== BRAND REVEAL (mobile only) ===== */
+.brand-reveal {
+    display: none;
+    background: var(--dark-midnight);
+    padding: 4rem 0;
+    text-align: center;
+}
+.brand-reveal__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+.brand-reveal__logo {
+    width: clamp(160px, 45vw, 260px);
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.brand-reveal__logo.in-view {
+    opacity: 1;
+    transform: scale(1);
+}
+.brand-reveal__tagline {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
+}
+.brand-reveal__tagline.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ===== UTILITY ===== */
 .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
 .label {
@@ -1646,31 +1685,6 @@ input, textarea, select { font: inherit; }
     /* Hero */
     .hero-wrap { height: auto !important; }
     .hero__overlay { background: linear-gradient(to bottom, rgba(6,11,20,0.3) 0%, rgba(6,11,20,0.5) 100%) !important; }
-    .hero__label,
-    .hero__title,
-    .hero__subtitle {
-        background: rgba(6, 11, 20, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 8px;
-        display: inline;
-        padding: 0.3rem 0.6rem;
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-    }
-    .hero__label {
-        border-left: none;
-        padding: 0.35rem 0.7rem;
-        border-radius: 6px;
-    }
-    .hero__title {
-        padding: 0.3rem 0.5rem;
-        line-height: 1.35;
-    }
-    .hero__subtitle {
-        padding: 0.4rem 0.6rem;
-        line-height: 1.9;
-    }
     .hero {
         background: radial-gradient(ellipse at 70% 50%, rgba(0,168,214,0.06) 0%, transparent 60%), var(--dark-midnight);
         min-height: auto;
@@ -1680,12 +1694,51 @@ input, textarea, select { font: inherit; }
     .hero__controls { display: none; }
     .hero__scroll { display: none; }
     .hero__bg-brand { display: none; }
-    .hero__title { font-size: 2.2rem; }
-    .hero__label { border-left: none; padding-left: 0; }
+    .hero__label {
+        display: inline-flex;
+        border-left: none;
+        padding: 0.35rem 0.7rem;
+        background: rgba(6, 11, 20, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 6px;
+        margin-bottom: 2rem;
+    }
     .hero__label::before { display: none; }
-    .hero__subtitle { font-size: 0.95rem; }
+    .hero__title {
+        font-size: 2.2rem;
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+    .hero__title .split-word,
+    .hero__title .split-char,
+    .hero__title .accent {
+        background: rgba(6, 11, 20, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 4px;
+        padding: 0.15rem 0.35rem;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+    .hero__subtitle {
+        font-size: 0.95rem;
+        display: inline;
+        background: rgba(6, 11, 20, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 6px;
+        padding: 0.35rem 0.6rem;
+        line-height: 2;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+        margin-bottom: 2.5rem;
+    }
     .hero__cta { flex-direction: column; }
     .hero__cta .btn { width: 100%; padding: 0.9rem 1.5rem; }
+
+    /* Brand Reveal */
+    .brand-reveal { display: block; }
 
     /* Intro / Reviews */
     .intro { padding: clamp(40px, 8vw, 80px) 0; }
@@ -1937,6 +1990,14 @@ input, textarea, select { font: inherit; }
 </section>
 </div>
 </div>
+
+<!-- ======================== BRAND REVEAL (mobile) ======================== -->
+<section class="brand-reveal" id="brandReveal">
+    <div class="brand-reveal__inner">
+        <img src="Images/Logos/Paddock_Logo_1 Background Removed.png" alt="Paddock Imports" class="brand-reveal__logo">
+        <span class="brand-reveal__tagline">Established 1993</span>
+    </div>
+</section>
 
 <!-- ======================== INTRODUCTION STATEMENT ======================== -->
 <section class="intro">
@@ -2876,6 +2937,19 @@ function initAnimations() {
     // Recalculate all trigger positions after layout settles
     setTimeout(() => ScrollTrigger.refresh(), 200);
 }
+
+// ===== BRAND REVEAL — FADE IN ON SCROLL =====
+const brandRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            brandRevealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+document.querySelectorAll('.brand-reveal__logo, .brand-reveal__tagline').forEach(el => {
+    brandRevealObserver.observe(el);
+});
 
 // ===== BENTO GALLERY — FADE IN ON SCROLL =====
 const galleryObserver = new IntersectionObserver((entries) => {
