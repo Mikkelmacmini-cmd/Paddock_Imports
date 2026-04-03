@@ -1705,7 +1705,7 @@ input, textarea, select { font: inherit; }
     .gallery-lightbox__next { right: 0.75rem; }
 
     /* Legacy / About */
-    .legacy { padding: clamp(40px, 8vw, 80px) 0; }
+    .legacy { padding: clamp(40px, 8vw, 80px) 0 clamp(30px, 6vw, 60px); }
     .legacy__deco { font-size: 8rem; }
     .legacy__text-side h2 { font-size: 1.8rem; margin-bottom: 1rem; }
     .legacy__text-side p { font-size: 0.9rem; line-height: 1.7; }
@@ -1745,10 +1745,11 @@ input, textarea, select { font: inherit; }
     }
     .legacy__view-all {
         display: flex !important;
+        margin-top: 0.75rem;
     }
     .bento-modal__dock { max-width: 90vw; overflow-x: auto; }
     .bento-modal__thumb { width: 32px; height: 32px; }
-    .legacy__stats { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 2.5rem; padding-top: 2rem; }
+    .legacy__stats { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1.25rem; padding-top: 1.25rem; }
     .legacy__stats > div { padding: 0.75rem 0.4rem; }
     .legacy__stat-number { font-size: 1.8rem; }
     .legacy__stat-label { font-size: 0.6rem; letter-spacing: 0.08em; }
