@@ -781,6 +781,7 @@ input, textarea, select { font: inherit; }
     opacity: 0.5;
     transition: opacity 0.2s, transform 0.2s;
 }
+.gallery-strip__mobile-label { display: none; }
 .gallery-strip__item:hover .gallery-strip__logo {
     opacity: 1;
     transform: scale(1.1);
@@ -1664,12 +1665,29 @@ input, textarea, select { font: inherit; }
     .intro__review-card blockquote { font-size: 0.85rem; }
 
     /* Marques Gallery */
-    .gallery-strip { flex-direction: column; height: auto; gap: 8px; }
-    .gallery-strip__item { height: 180px; flex: none !important; border-radius: 10px; }
-    .gallery-strip__item:hover { height: 260px; }
-    .gallery-strip__info { opacity: 1; transform: none; }
-    .gallery-strip__logo-bar { height: 50px; margin-top: 0.4rem; }
-    .gallery-strip__logo { height: 24px; }
+    .gallery-strip { flex-direction: column; height: auto; gap: 10px; }
+    .gallery-strip__item { height: 280px; flex: none !important; border-radius: 12px; }
+    .gallery-strip__item:hover { height: 280px; }
+    .gallery-strip__info { opacity: 0; transform: translateY(15px); }
+    .gallery-strip__item.mobile-active .gallery-strip__info { opacity: 1; transform: translateY(0); }
+    .gallery-strip__item.mobile-active .gallery-strip__overlay { background: rgba(0,0,0,0.5); }
+    .gallery-strip__item.mobile-active .gallery-strip__mobile-label { opacity: 0; }
+    /* Always-visible brand label on mobile */
+    .gallery-strip__mobile-label {
+        display: block;
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        z-index: 3;
+        font-family: var(--font-serif);
+        font-size: 1.1rem;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        pointer-events: none;
+        transition: opacity 0.15s;
+    }
+    .gallery-strip__logo-bar { height: 0; overflow: hidden; margin: 0; padding: 0; }
+    .gallery-strip__logo { display: none; }
     .gallery-lightbox__prev { left: 0.75rem; }
     .gallery-lightbox__next { right: 0.75rem; }
 
@@ -1757,8 +1775,8 @@ input, textarea, select { font: inherit; }
     .hero__subtitle { font-size: 0.85rem; }
     .intro__heading { font-size: 1.3rem; }
     .intro__reviews { height: 280px; }
-    .gallery-strip__item { height: 150px; }
-    .gallery-strip__item:hover { height: 220px; }
+    .gallery-strip__item { height: 240px; }
+    .gallery-strip__item:hover { height: 240px; }
     .legacy__text-side h2 { font-size: 1.5rem; }
     .legacy__gallery { grid-auto-rows: 40px; }
     .legacy__stats { grid-template-columns: 1fr 1fr 1fr; gap: 0.3rem; }
@@ -1999,6 +2017,7 @@ input, textarea, select { font: inherit; }
         <div class="gallery-strip">
             <!-- BMW -->
             <div class="gallery-strip__item" data-brand="BMW">
+                <span class="gallery-strip__mobile-label">BMW Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/BMW.jpg" alt="BMW Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2014,6 +2033,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Audi -->
             <div class="gallery-strip__item" data-brand="Audi">
+                <span class="gallery-strip__mobile-label">Audi Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Audi.jpg" alt="Audi Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2029,6 +2049,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Mercedes-Benz -->
             <div class="gallery-strip__item" data-brand="Mercedes-Benz">
+                <span class="gallery-strip__mobile-label">Mercedes-Benz Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Merecedes.jpg" alt="Mercedes Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2044,6 +2065,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Volkswagen -->
             <div class="gallery-strip__item" data-brand="Volkswagen">
+                <span class="gallery-strip__mobile-label">Volkswagen Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Vokswagen.jpg" alt="VW Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2059,6 +2081,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Porsche -->
             <div class="gallery-strip__item" data-brand="Porsche">
+                <span class="gallery-strip__mobile-label">Porsche Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2074,6 +2097,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- MINI -->
             <div class="gallery-strip__item" data-brand="MINI">
+                <span class="gallery-strip__mobile-label">MINI Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Mini.jpg" alt="MINI Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2089,6 +2113,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Lamborghini -->
             <div class="gallery-strip__item" data-brand="Lamborghini">
+                <span class="gallery-strip__mobile-label">Lamborghini Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/LAMBO.jpg" alt="Lamborghini Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2104,6 +2129,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Rolls Royce -->
             <div class="gallery-strip__item" data-brand="Rolls-Royce">
+                <span class="gallery-strip__mobile-label">Rolls-Royce Specialist</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/roll_royce.jpg" alt="Rolls-Royce Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2884,7 +2910,18 @@ function updateLightbox() {
 }
 
 galleryItems.forEach((item, i) => {
-    item.addEventListener('click', () => openLightbox(i));
+    item.addEventListener('click', () => {
+        if (isMobile) {
+            if (item.classList.contains('mobile-active')) {
+                openLightbox(i);
+            } else {
+                galleryItems.forEach(g => g.classList.remove('mobile-active'));
+                item.classList.add('mobile-active');
+            }
+        } else {
+            openLightbox(i);
+        }
+    });
 });
 lightbox.querySelector('.gallery-lightbox__close').addEventListener('click', closeLightbox);
 lightbox.querySelector('.gallery-lightbox__prev').addEventListener('click', (e) => {
