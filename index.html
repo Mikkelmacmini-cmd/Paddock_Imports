@@ -1755,14 +1755,21 @@ input, textarea, select { font: inherit; }
     .gallery-strip__item { height: 280px; flex: none !important; border-radius: 12px; }
     .gallery-strip__item:hover { height: 280px; }
     .gallery-strip__info {
-        opacity: 0;
-        transform: translateY(15px);
+        opacity: 0 !important;
+        transform: translateY(15px) !important;
         background: none;
         padding: 1.25rem 1rem;
     }
+    .gallery-strip__item:hover .gallery-strip__info {
+        opacity: 0 !important;
+        transform: translateY(15px) !important;
+    }
     .gallery-strip__item.mobile-active .gallery-strip__info {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    .gallery-strip__item:hover .gallery-strip__overlay {
         opacity: 1;
-        transform: translateY(0);
     }
     .gallery-strip__item.mobile-active .gallery-strip__overlay {
         background: rgba(0,0,0,0.2);
