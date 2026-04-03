@@ -1670,7 +1670,11 @@ input, textarea, select { font: inherit; }
     .gallery-strip__item:hover { height: 280px; }
     .gallery-strip__info { opacity: 0; transform: translateY(15px); }
     .gallery-strip__item.mobile-active .gallery-strip__info { opacity: 1; transform: translateY(0); }
-    .gallery-strip__item.mobile-active .gallery-strip__overlay { background: rgba(0,0,0,0.5); }
+    .gallery-strip__item.mobile-active .gallery-strip__overlay {
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    }
+    .gallery-strip__name { text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+    .gallery-strip__desc { text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
     .gallery-strip__item.mobile-active .gallery-strip__mobile-label { opacity: 0; }
     /* Always-visible brand label on mobile */
     .gallery-strip__mobile-label {
@@ -2912,12 +2916,8 @@ function updateLightbox() {
 galleryItems.forEach((item, i) => {
     item.addEventListener('click', () => {
         if (isMobile) {
-            if (item.classList.contains('mobile-active')) {
-                openLightbox(i);
-            } else {
-                galleryItems.forEach(g => g.classList.remove('mobile-active'));
-                item.classList.add('mobile-active');
-            }
+            galleryItems.forEach(g => { if (g !== item) g.classList.remove('mobile-active'); });
+            item.classList.toggle('mobile-active');
         } else {
             openLightbox(i);
         }
