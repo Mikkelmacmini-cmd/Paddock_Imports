@@ -934,6 +934,27 @@ input, textarea, select { font: inherit; }
     transition: gap 0.15s;
 }
 .legacy__link:hover { gap: 1rem; }
+.legacy__view-all {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    border: 1.5px solid var(--accent-cyan);
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+}
+.legacy__view-all:hover {
+    background: var(--accent-cyan);
+    color: #fff;
+}
 
 /* Masonry image gallery */
 /* Bento gallery */
@@ -1704,6 +1725,9 @@ input, textarea, select { font: inherit; }
         height: auto;
         border-radius: 10px;
     }
+    .legacy__gallery-item:nth-child(n+5) {
+        display: none;
+    }
     .legacy__gallery-item img {
         position: static;
         width: 100%;
@@ -1718,6 +1742,9 @@ input, textarea, select { font: inherit; }
     .legacy__gallery-item:hover {
         overflow: hidden;
         z-index: 1;
+    }
+    .legacy__view-all {
+        display: flex !important;
     }
     .bento-modal__dock { max-width: 90vw; overflow-x: auto; }
     .bento-modal__thumb { width: 32px; height: 32px; }
@@ -2229,6 +2256,10 @@ input, textarea, select { font: inherit; }
                     <div class="legacy__gallery-overlay"><span>Engine Bay</span><small>Dedicated technicians, every day</small></div>
                 </div>
             </div>
+
+            <a href="#" class="legacy__view-all" id="viewAllPhotos">
+                View All Photos <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
             <!-- Bento modal -->
             <div class="bento-modal" id="bentoModal">
@@ -2880,6 +2911,10 @@ function closeBentoModal() {
 }
 bentoItems.forEach((item, i) => {
     item.addEventListener('click', () => openBentoModal(i));
+});
+document.getElementById('viewAllPhotos').addEventListener('click', (e) => {
+    e.preventDefault();
+    openBentoModal(0);
 });
 bentoModal.querySelector('.bento-modal__close').addEventListener('click', closeBentoModal);
 bentoModal.addEventListener('click', (e) => { if (e.target === bentoModal) closeBentoModal(); });
