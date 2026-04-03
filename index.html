@@ -1755,12 +1755,42 @@ input, textarea, select { font: inherit; }
     .gallery-strip__item { height: 280px; flex: none !important; border-radius: 12px; }
     .gallery-strip__item:hover { height: 280px; }
     .gallery-strip__info { opacity: 0; transform: translateY(15px); }
-    .gallery-strip__item.mobile-active .gallery-strip__info { opacity: 1; transform: translateY(0); }
-    .gallery-strip__item.mobile-active .gallery-strip__overlay {
-        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    .gallery-strip__item.mobile-active .gallery-strip__info {
+        opacity: 1;
+        transform: translateY(0);
+        background: none;
     }
-    .gallery-strip__name { text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
-    .gallery-strip__desc { text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+    .gallery-strip__item.mobile-active .gallery-strip__overlay {
+        background: rgba(0,0,0,0.25);
+    }
+    .gallery-strip__item.mobile-active .gallery-strip__name,
+    .gallery-strip__item.mobile-active .gallery-strip__desc {
+        background: rgba(6, 11, 20, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        display: inline;
+        padding: 0.25rem 0.5rem;
+        border-radius: 5px;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+    .gallery-strip__item.mobile-active .gallery-strip__name {
+        font-size: 1.15rem;
+        padding: 0.3rem 0.6rem;
+        line-height: 1.6;
+    }
+    .gallery-strip__item.mobile-active .gallery-strip__desc {
+        line-height: 2;
+        padding: 0.2rem 0.5rem;
+    }
+    .gallery-strip__item.mobile-active .gallery-strip__cta {
+        display: inline-flex;
+        background: rgba(6, 11, 20, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0.35rem 0.6rem;
+        border-radius: 5px;
+    }
     .gallery-strip__item.mobile-active .gallery-strip__mobile-label { opacity: 0; }
     /* Always-visible brand label on mobile */
     .gallery-strip__mobile-label {
@@ -1770,9 +1800,13 @@ input, textarea, select { font: inherit; }
         left: 1rem;
         z-index: 3;
         font-family: var(--font-serif);
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         color: #fff;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        background: rgba(6, 11, 20, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0.4rem 0.8rem;
+        border-radius: 8px;
         pointer-events: none;
         transition: opacity 0.15s;
     }
@@ -2139,7 +2173,7 @@ input, textarea, select { font: inherit; }
         <div class="gallery-strip">
             <!-- BMW -->
             <div class="gallery-strip__item" data-brand="BMW">
-                <span class="gallery-strip__mobile-label">BMW Specialist</span>
+                <span class="gallery-strip__mobile-label">BMW</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/BMW.jpg" alt="BMW Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2155,7 +2189,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Audi -->
             <div class="gallery-strip__item" data-brand="Audi">
-                <span class="gallery-strip__mobile-label">Audi Specialist</span>
+                <span class="gallery-strip__mobile-label">Audi</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Audi.jpg" alt="Audi Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2171,7 +2205,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Mercedes-Benz -->
             <div class="gallery-strip__item" data-brand="Mercedes-Benz">
-                <span class="gallery-strip__mobile-label">Mercedes-Benz Specialist</span>
+                <span class="gallery-strip__mobile-label">Mercedes-Benz</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Merecedes.jpg" alt="Mercedes Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2187,7 +2221,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Volkswagen -->
             <div class="gallery-strip__item" data-brand="Volkswagen">
-                <span class="gallery-strip__mobile-label">Volkswagen Specialist</span>
+                <span class="gallery-strip__mobile-label">Volkswagen</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Vokswagen.jpg" alt="VW Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2203,7 +2237,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Porsche -->
             <div class="gallery-strip__item" data-brand="Porsche">
-                <span class="gallery-strip__mobile-label">Porsche Specialist</span>
+                <span class="gallery-strip__mobile-label">Porsche</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2219,7 +2253,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- MINI -->
             <div class="gallery-strip__item" data-brand="MINI">
-                <span class="gallery-strip__mobile-label">MINI Specialist</span>
+                <span class="gallery-strip__mobile-label">MINI</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/Mini.jpg" alt="MINI Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2235,7 +2269,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Lamborghini -->
             <div class="gallery-strip__item" data-brand="Lamborghini">
-                <span class="gallery-strip__mobile-label">Lamborghini Specialist</span>
+                <span class="gallery-strip__mobile-label">Lamborghini</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/LAMBO.jpg" alt="Lamborghini Service">
                     <div class="gallery-strip__overlay"></div>
@@ -2251,7 +2285,7 @@ input, textarea, select { font: inherit; }
             </div>
             <!-- Rolls Royce -->
             <div class="gallery-strip__item" data-brand="Rolls-Royce">
-                <span class="gallery-strip__mobile-label">Rolls-Royce Specialist</span>
+                <span class="gallery-strip__mobile-label">Rolls-Royce</span>
                 <div class="gallery-strip__img-wrap">
                     <img src="Images/Marques/roll_royce.jpg" alt="Rolls-Royce Service">
                     <div class="gallery-strip__overlay"></div>
